@@ -1,0 +1,36 @@
+{
+  "name": "h5-dropdown",
+  "version": "0.0.0",
+  "description": "",
+  "main": "src/h5-dropdown.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "node node_modules/h5-test/bin/run.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joseaugustoneto/h5-dropdown.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joseaugustoneto/h5-dropdown/issues"
+  },
+  "homepage": "https://github.com/joseaugustoneto/h5-dropdown",
+  "dependencies": {
+    "flux": "^2.0.3",
+    "flux-easy": "latest",
+    "react": "^0.13.3"
+  },
+  "devDependencies": {
+    "babel": "^5.8.3",
+    "babel-core": "^5.8.3",
+    "babel-loader": "^5.3.2",
+    "bundle": "^0.2.3",
+    "bundle-loader": "^0.5.4",
+    "flux-easy-loader": "latest",
+    "h5-test": "latest"
+  }
+}

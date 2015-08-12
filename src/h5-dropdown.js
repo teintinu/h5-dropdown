@@ -3,25 +3,32 @@ var hdropDownState = {
 };
 
 var hdropDown = {
-    toggleDropDown: function(){
-        if(this.isDropDown())
+    toggleDropDown: function () {
+        if (this.isDropDown())
             this.closeDropDown();
         else
             this.openDropDown();
     },
-    openDropDown: function(){
-        var old = hdropDownState.current;
-        hdropDownState.current = this;
-        this.setState({});
-        if(old)
-            old.setState({});
+    openDropDown: function () {
+        var self = this;
+        setTimeout(function () {
+            var old = hdropDownState.current;
+            hdropDownState.current = self;
+            self.setState({});
+            if (old && old != self)
+                old.setState({});
+        }, 1)
     },
-    closeDropDown: function(){
-        if(hdropDownState.current == this)
-            hdropDownState.current = null;
-        this.setState({});
+    closeDropDown: function () {
+        var self = this;
+        setTimeout(function () {
+            if (hdropDownState.current == self) {
+                hdropDownState.current = null;
+            }
+            self.setState({});
+        }, 1)
     },
-    isDropDown: function(){
+    isDropDown: function () {
         return hdropDownState.current == this;
     }
 };

@@ -2,35 +2,44 @@ var hdropDownState = {
     current: null
 };
 
+var k = 0;
 var hdropDown = {
-    toggleDropDown: function () {
-        if (this.isDropDown())
+    toggleDropDown: function(e){
+        if(this.isDropDown()){
             this.closeDropDown();
+            k = 0;
+        }
         else
             this.openDropDown();
+
     },
-    openDropDown: function () {
-        var self = this;
-        setTimeout(function () {
-            var old = hdropDownState.current;
-            hdropDownState.current = self;
-            self.setState({});
-            if (old && old != self)
-                old.setState({});
-        }, 1)
+    toggleDropDown_window: function(e){
+        if(this.isDropDown()){
+            k++;
+        }
+        if(this.isDropDown() && k == 2) {
+            this.closeDropDown();
+            k = 0;
+        }
     },
-    closeDropDown: function () {
-        var self = this;
-        setTimeout(function () {
-            if (hdropDownState.current == self) {
-                hdropDownState.current = null;
-            }
-            self.setState({});
-        }, 1)
+    openDropDown: function(){
+        var old = hdropDownState.current;
+        hdropDownState.current = this;
+        this.setState({});
+        if(old)
+            old.setState({});
+        window.addEventListener("click", this.toggleDropDown_window.bind(this))
+
     },
-    isDropDown: function () {
+    closeDropDown: function(){
+        if(hdropDownState.current == this)
+            hdropDownState.current = null;
+        this.setState({});
+    },
+    isDropDown: function(){
         return hdropDownState.current == this;
-    }
+    },
 };
+
 
 module.exports = hdropDown;

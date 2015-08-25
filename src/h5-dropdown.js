@@ -5,6 +5,7 @@ var hdropDownState = {
 var k = 0;
 var hdropDown = {
     toggleDropDown: function(e){
+        k = 0;
         if(this.isDropDown()){
             this.closeDropDown();
             k = 0;
